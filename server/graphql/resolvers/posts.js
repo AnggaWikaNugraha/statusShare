@@ -1,5 +1,4 @@
 const Post = require('../../models/Post');
-const User = require('../../models/Post');
 
 module.exports = {
     Query: {
