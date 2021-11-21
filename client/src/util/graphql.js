@@ -1,4 +1,4 @@
-import gql from '@apollo/client'
+import { gql } from 'graphql-tag'
 
 // QUERY
 export const FETCH_POSTS_QUERY = gql`
