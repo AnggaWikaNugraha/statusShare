@@ -5,7 +5,7 @@ import { Grid, Transition } from 'semantic-ui-react';
 function Home() {
 
     return (
-        <>tes</>
+        <>home</>
     );
 }
 

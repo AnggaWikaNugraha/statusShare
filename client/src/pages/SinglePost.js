@@ -5,13 +5,13 @@ import { Grid, Transition } from 'semantic-ui-react';
 // import PostForm from '../components/PostForm';
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 
-function Register() {
+function SinglePost() {
 
     return (
         <Grid columns={3}>
-            Register
+            SinglePost
         </Grid>
     );
 }
 
-export default Register;
+export default SinglePost;

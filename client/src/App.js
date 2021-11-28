@@ -7,17 +7,33 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+
 import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import SinglePost from './pages/SinglePost';
+import MenuBar from './components/MenuBar';
+import { Container } from 'semantic-ui-react';
+import Layout from './pages/Layout';
 
 function App() {
   return (
     <ApolloProviderApp>
+
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-          </Route>
-        </Routes>
+        <Container>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="login" component={<Login />} />
+              <Route path="register" component={Register} />
+              <Route path="posts/:postId" component={SinglePost} />
+            </Route>
+          </Routes>
+
+        </Container>
       </BrowserRouter>
+
     </ApolloProviderApp>
   );
 }
