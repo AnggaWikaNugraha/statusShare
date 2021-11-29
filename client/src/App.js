@@ -25,9 +25,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
-              <Route path="login" component={<Login />} />
-              <Route path="register" component={Register} />
-              <Route path="posts/:postId" component={SinglePost} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="posts/:postId" element={<SinglePost />} />
             </Route>
           </Routes>
 
