@@ -2,10 +2,11 @@ import { useMutation } from '@apollo/client';
 import React, { useEffect, useState } from 'react'
 import { Button, Icon, Label } from 'semantic-ui-react';
 import { LIKE_POST_MUTATION } from '../util/graphql';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LikeButton = ({ user, post: { id, likeCount, likes } }) => {
     const [liked, setLiked] = useState(false);
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (user && likes.find((like) => like.username === user.username)) {
@@ -28,7 +29,7 @@ const LikeButton = ({ user, post: { id, likeCount, likes } }) => {
             </Button>
         )
     ) : (
-        <Button as={Link} to="/login" color="teal" basic>
+        <Button onClick={() => navigate('/login')} color="teal" basic>
             <Icon name="heart" />
         </Button>
     );
