@@ -37,7 +37,6 @@ Go to project folder frontend:
 > open http://localhost:3000 untuk liat web
 
 ### Stack technology backend
-- typescript
 - express
 - mongodb
 - mongoose
@@ -49,7 +48,6 @@ Go to project folder frontend:
 
 ### Stack technology backend
 
--   typescript
 -   context
 -   apollo/client
 -   graphql
