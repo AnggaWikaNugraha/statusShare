@@ -18,31 +18,38 @@ const LikeButton = ({ user, post: { id, likeCount, likes } }) => {
         variables: { postId: id }
     });
 
-    const likeButton =
-        user ? (
-            liked ? (
-                <Button color="teal">
-                    <Icon name="heart" />
-                </Button>
-            ) : (
-                <Button color="teal" basic>
-                    <Icon name="heart" />
-                </Button>
-            )
-        ) : (
-            <Button onClick={() => navigate('/login')} color="teal" basic>
-                <Icon name="heart" />
-            </Button>
-        );
+    const likeButton = liked ? (
+        <Button color="teal">
+            <Icon name="heart" />
+        </Button>
+    ) : (
+        <Button color="teal" basic>
+            <Icon name="heart" />
+        </Button>
+    )
 
     return (
         <>
-            {likeButton}
-            <Button as="div" labelPosition="right" onClick={likePost}>
-                <Label basic color="teal" pointing="left">
-                    {likeCount}
-                </Label>
-            </Button>
+            {
+                user
+                    ?
+                    <>
+                        {likeButton}
+                        <Button as="div" labelPosition="right" onClick={likePost}>
+                            <Label basic color="teal" pointing="left">
+                                {likeCount}
+                            </Label>
+                        </Button>
+                    </>
+                    : <>
+                        <Button onClick={() => navigate('/login')} color="teal" basic>
+                            <Icon name="heart" />
+                        </Button>
+                        <Label basic color="teal" pointing="left">
+                            {likeCount}
+                        </Label>
+                    </>
+            }
         </>
     )
 }
