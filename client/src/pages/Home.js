@@ -10,7 +10,6 @@ function Home() {
     const { user } = useContext(AuthContext);
 
     const { loading, data } = useQuery(FETCH_POSTS_QUERY)
-    console.log(data)
     return (
         <>
 

@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 import React, { useEffect, useState } from 'react'
 import { Button, Icon, Label } from 'semantic-ui-react';
 import { LIKE_POST_MUTATION } from '../util/graphql';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const LikeButton = ({ user, post: { id, likeCount, likes } }) => {
     const [liked, setLiked] = useState(false);
@@ -18,29 +18,32 @@ const LikeButton = ({ user, post: { id, likeCount, likes } }) => {
         variables: { postId: id }
     });
 
-    const likeButton = user ? (
-        liked ? (
-            <Button color="teal">
-                <Icon name="heart" />
-            </Button>
+    const likeButton =
+        user ? (
+            liked ? (
+                <Button color="teal">
+                    <Icon name="heart" />
+                </Button>
+            ) : (
+                <Button color="teal" basic>
+                    <Icon name="heart" />
+                </Button>
+            )
         ) : (
-            <Button color="teal" basic>
+            <Button onClick={() => navigate('/login')} color="teal" basic>
                 <Icon name="heart" />
             </Button>
-        )
-    ) : (
-        <Button onClick={() => navigate('/login')} color="teal" basic>
-            <Icon name="heart" />
-        </Button>
-    );
+        );
 
     return (
-        <Button as="div" labelPosition="right" onClick={likePost}>
+        <>
             {likeButton}
-            <Label basic color="teal" pointing="left">
-                {likeCount}
-            </Label>
-        </Button>
+            <Button as="div" labelPosition="right" onClick={likePost}>
+                <Label basic color="teal" pointing="left">
+                    {likeCount}
+                </Label>
+            </Button>
+        </>
     )
 }
 
