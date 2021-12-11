@@ -7,7 +7,6 @@ import { FETCH_POSTS_QUERY } from '../util/graphql';
 function Home() {
 
     const { loading, data } = useQuery(FETCH_POSTS_QUERY)
-    console.log(data)
     return (
         <Grid columns={3}>
             <Grid.Row className="page-title">
