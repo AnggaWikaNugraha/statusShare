@@ -4,8 +4,10 @@ import { Button, Form, Grid, Transition } from 'semantic-ui-react';
 import { LOGIN_USER } from '../util/graphql';
 import { useForm } from '../util/Hooks';
 import { useNavigate } from 'react-router';
+import { AuthContext } from '../context/auth';
 
 function Login() {
+    const context = useContext(AuthContext)
 
     const { onChange, onSubmit, values } = useForm(loginUserCallback, {
         username: '',
@@ -17,8 +19,8 @@ function Login() {
     const [errors, setErrors] = useState({});
 
     const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-        update(_, result) {
-            console.log(result)
+        update(_, { data: { login: userData } }) {
+            context.login(userData)
             navigate('/')
         },
         onError(err) {

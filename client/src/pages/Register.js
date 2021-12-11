@@ -5,9 +5,11 @@ import { FETCH_POSTS_QUERY, REGISTER_USER } from '../util/graphql';
 import { useForm } from '../util/Hooks';
 import { useMutation } from '@apollo/client'
 import { useNavigate } from 'react-router';
+import { AuthContext } from '../context/auth';
 
 function Register(props) {
     const navigate = useNavigate()
+    const context = useContext(AuthContext)
     const [errors, setErrors] = useState({});
     const { onChange, onSubmit, values } = useForm(registerUser, {
         username: '',
@@ -17,9 +19,9 @@ function Register(props) {
     });
 
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
-        update(_, result) {
-            console.log(result)
-            navigate('/login')
+        update(_, { data: { register: userData } }) {
+            context.login(userData)
+            navigate('/')
         },
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);

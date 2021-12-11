@@ -12,29 +12,31 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import SinglePost from './pages/SinglePost';
-import MenuBar from './components/MenuBar';
 import { Container } from 'semantic-ui-react';
 import Layout from './pages/Layout';
+import { AuthProvider } from './context/auth';
 
 function App() {
   return (
-    <ApolloProviderApp>
+    <AuthProvider>
+      <ApolloProviderApp>
 
-      <BrowserRouter>
-        <Container>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="login" element={<Login />} />
-              <Route path="register" element={<Register />} />
-              <Route path="posts/:postId" element={<SinglePost />} />
-            </Route>
-          </Routes>
+        <BrowserRouter>
+          <Container>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
+                <Route path="posts/:postId" element={<SinglePost />} />
+              </Route>
+            </Routes>
 
-        </Container>
-      </BrowserRouter>
+          </Container>
+        </BrowserRouter>
 
-    </ApolloProviderApp>
+      </ApolloProviderApp>
+    </AuthProvider>
   );
 }
 
