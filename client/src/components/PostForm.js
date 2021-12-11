@@ -6,9 +6,7 @@ import { useForm } from '../util/Hooks';
 
 const PostForm = () => {
 
-    const { values, onChange, onSubmit } = useForm(createPostCallback, {
-        body: ''
-    });
+    const { values, onChange, onSubmit } = useForm(createPostCallback, { body: '' });
 
     const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
         variables: values,
@@ -24,9 +22,7 @@ const PostForm = () => {
         }
     })
 
-    function createPostCallback() {
-        createPost();
-    }
+    function createPostCallback() { createPost() }
 
     return (
         <>
@@ -45,13 +41,13 @@ const PostForm = () => {
                     </Button>
                 </Form.Field>
             </Form>
-            {/* {error && (
-          <div className="ui error message" style={{ marginBottom: 20 }}>
-            <ul className="list">
-              <li>{error.graphQLErrors[0].message}</li>
-            </ul>
-          </div>
-        )} */}
+            {error && (
+                <div className="ui error message" style={{ marginBottom: 20 }}>
+                    <ul className="list">
+                        <li>{error.graphQLErrors[0].message}</li>
+                    </ul>
+                </div>
+            )}
         </>
     )
 }
