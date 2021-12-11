@@ -15,6 +15,7 @@ import SinglePost from './pages/SinglePost';
 import { Container } from 'semantic-ui-react';
 import Layout from './pages/Layout';
 import { AuthProvider } from './context/auth';
+import { GuardOnlyLogin } from './util/AuthRouter';
 
 function App() {
   return (
